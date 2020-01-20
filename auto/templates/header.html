@@ -242,7 +242,7 @@
 {#                                            data-currency="usd">#}
 {#                                        </script>#}
 {#                                    </form>#}
-                                      <button class="btn btn-lg checkout" onclick="location.href='{% url 'place_order' %}'">Cash on delivery</button>
+                                      <button class="btn btn-lg checkout" onclick="fbq('track','AddToCart');location.href='{% url 'place_order' %}';">Cash on delivery</button>
                                 </div>
 					</div>
 				</div>
