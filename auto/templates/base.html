@@ -79,9 +79,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (parsedData.products.length === 0){
                 $('.stripe-button-el').prop('disabled', true);
                 $('.checkout').prop('disabled', true);
+                $('.custom-notification').css("display", "none");
             } else {
                 $('.stripe-button-el').prop('disabled', false);
                 $('.checkout').prop('disabled', false);
+                 $('.custom-notification').css("display", "flex");
+                $('#cart-length').html(parsedData.products.length);
             }
         });
 </script>
@@ -103,6 +106,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 $(".product-id-{{ item.id }}").slideUp(300, function() {
                 $(".product-id-{{ item.id }}").remove();
                     var items = JSON.parse(localStorage["cart"]);
+                    $('#cart-length').html(items.products.length-1); {# show count of item on cart icon #}
+                    $('.custom-notification').css("display", "flex");
                       for (var i = 0; i < items.products.length; i++) {
                          if(items.products[i].id == {{ item.id }}){
                            items.products.splice(i,1);
@@ -111,6 +116,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       }
                       item = JSON.stringify(items);
                       localStorage.setItem("cart", item);
+                      myData = localStorage.getItem('cart');
+                       parsedData = JSON.parse(myData);
+                       if(parsedData.products.length === 0){
+                            $('.custom-notification').css("display", "none");
+                            $('.stripe-button-el').prop('disabled', true);
+                            $('.checkout').prop('disabled', true);
+                       }
                 calculateTotal()
             });
         });
@@ -524,6 +536,9 @@ $(".car-year ul li li").click(function(){
             }
 
             $('#item-added-to-cart').modal('show');
+
+            $('#cart-length').html(items.products.length+1);  {# show count of item on cart icon #}
+             $('.custom-notification').css("display", "flex");
 
             setTimeout(function() {
                 $('#item-added-to-cart').modal('hide');
