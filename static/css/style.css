@@ -6722,7 +6722,7 @@ input.inputError:focus {
     flex-direction: row;
     box-sizing: border-box;
     display: flex;
-    place-content: stretch space-evenly;
+    place-content: flex-start;
     align-items: stretch;
     max-height: 100%;
 }
@@ -6752,7 +6752,7 @@ input.inputError:focus {
     flex-direction: row;
     box-sizing: border-box;
     display: flex;
-    place-content: stretch space-evenly;
+    place-content: center;
     align-items: stretch;
     max-height: 100%;
 }
