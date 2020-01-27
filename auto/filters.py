@@ -36,13 +36,17 @@ class ProductFilter(django_filters.FilterSet):
         queryList = value.split()
         queryList.append(value)
         queries = [Q(product_title__icontains=value) for value in queryList]
-
+        queries1 = [Q(product_title__search=value)]
         query = queries.pop()
-
+        query1 = queries1.pop()
         for item in queries:
             query |= item
+        for item1 in queries1:
+            query1 |= item1
 
-        return Product.objects.filter(query)
+        intersection = Product.objects.filter(query) & Product.objects.filter(query1)
+
+        return intersection
 
 
     def filter_by_sort(self, queryset, name, value):
