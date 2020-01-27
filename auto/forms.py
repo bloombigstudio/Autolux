@@ -29,7 +29,7 @@ class SignInForm(forms.Form):
 class UserOrderForm(forms.ModelForm):
     class Meta:
         model = UserWithoutAccount
-        fields = ['first_name', 'last_name','email','contact_number','address']
+        fields = ['first_name', 'last_name','email','contact_number','address', 'comment']
 
 
 class SimpleOrderForm(forms.ModelForm):

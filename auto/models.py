@@ -128,6 +128,7 @@ class UserWithoutAccount(models.Model):
                                  message="Contact Number is not valid")
     contact_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)  # validators should be a list
     address = models.CharField(max_length=500)
+    comment = models.CharField(max_length=500, blank=True)
     email = models.EmailField(max_length=100)
 
     created_at = models.DateTimeField(auto_now_add=True)

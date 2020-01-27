@@ -244,6 +244,7 @@ class PlaceOrder(TemplateView):
                 last_name = orderForm.cleaned_data['last_name']
                 email = orderForm.cleaned_data['email']
                 address = orderForm.cleaned_data['address']
+                comment = orderForm.cleaned_data['comment']
                 contact_number = orderForm.cleaned_data['contact_number']
                 payment_method = request.POST['payment_method']
                 token = request.POST['token']

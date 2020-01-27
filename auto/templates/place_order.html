@@ -102,6 +102,10 @@
           {{ orderForm.address.label }}</label>
           {{ orderForm.address }}
       </div>
+        <div class="agile-field-txt">
+        <label> {{orderForm.comment.label }}</label>
+          {{ orderForm.comment }}
+      </div>
         <div id="form_errors" class="alert alert-danger" style="display: none; width: 100%">
         </div>
       <div class="w3ls-contact  w3l-sub">
@@ -160,6 +164,7 @@
                     email: $("#id_email").val(),
                     contact_number: $("#id_contact_number").val(),
                     address: $("#id_address").val(),
+                    comment: $("#id_comment").val(),
                     cart_info: cart_info,
                     payment_method: '{{payment_method}}',
                     token: '{{token}}',
