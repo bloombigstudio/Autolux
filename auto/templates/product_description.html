@@ -296,6 +296,10 @@ $(".input-number").keydown(function (e) {
                 product.id = "{{ item.id }}";
                 product.name = "{{ item.product_id.product_title }}";
                 product.price = "{{ item.product_id.product_discounted_price }}";
+                if(product.price=="None")
+                {
+                    product.price = "{{ item.product_id.product_price }}";
+                }
                 product.description = "{{ item.product_description }}";
                 product.quantity = productQuantity;
                 product.colors = selectedcolors;
