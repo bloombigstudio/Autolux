@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
@@ -12,7 +13,7 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to='images/blog', null=True, blank=True)
     slug = models.SlugField(max_length=250)
-    content = models.TextField()
+    content = RichTextField()
     seo_title = models.CharField(max_length=250)
     seo_description = models.CharField(max_length=160)
     author = models.ForeignKey(User, related_name='blog_posts', on_delete=models.CASCADE)
