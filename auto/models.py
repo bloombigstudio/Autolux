@@ -8,6 +8,7 @@ from imagekit.models import ImageSpecField
 from pilkit.processors import ResizeToFill
 import json
 from autoslug import AutoSlugField
+from ckeditor.fields import RichTextField
 
 Category_CHOICES = (
     ('Interior', 'INTERIOR'),
@@ -59,9 +60,9 @@ class Product(models.Model):
 
 class ProductSpecification(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_related_name')
-    product_description = models.CharField(max_length=200)
-    product_information = models.CharField(max_length=200)
-    product_review = models.CharField(max_length=200)
+    product_description = RichTextField()
+    product_information = RichTextField()
+    product_review = RichTextField()
     first_image_alt = models.CharField(max_length=200, blank=True, null=True)
     first_image = models.ImageField(upload_to='images')
     first_image_thumbnail = ImageSpecField(source='first_image',
