@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 <header>
     <!-- header -->
+
 <div class="header" id="home">
 	<div class="container-fluid">
         <div class="col-md-12 top-header-custom" align="center">
@@ -14,6 +15,7 @@
 </div>
 <!-- //header -->
 <!-- header-bot -->
+<div class="" id="myHeader1">
 <div class="header-bot">
 	<div class="header-bot_inner_wthreeinfo_header_mid">
 
@@ -28,7 +30,7 @@
 
         <!-- header-bot -->
             <div class="col-md-4 header-middle header-middle-custom">
-                <form action="{% url 'products' item_name="SearchResults" %}" method="GET">
+                <form method="GET" action="{% url 'products' item_name="SearchResults" %}" >
                     {% render_field filter.form.product_title type="search" id="search-term-id" class="input_search_header_custom" placeholder="Search here..." required="false"%}
                     <input class="input_submit_header_custom" type="submit" value=" ">
                     <div class="clearfix"></div>
@@ -89,6 +91,7 @@
 	</div>
 </div>
 <!-- //banner-top -->
+        </div>
 <!-- Modal1 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -410,3 +413,17 @@
     </div>
 
 </header>
+<script>
+window.onscroll = function() {myFunction()};
+
+var header1 = document.getElementById("myHeader1");
+var sticky = header1.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header1.classList.add("navbar-fixed-top");
+  } else {
+    header1.classList.remove("navbar-fixed-top");
+  }
+}
+</script>
