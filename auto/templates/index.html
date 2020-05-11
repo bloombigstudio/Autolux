@@ -70,6 +70,63 @@
     </div>
   <!-- banner-bootom-w3-agileits -->
 	<div class="banner-bootom-w3-agileits">
+
+<!-- /new_arrivals -->
+	<div class="new_arrivals_agile_w3ls_info">
+		<div class="container">
+		    <h3 class="wthree_text_info">New <span>Arrivals</span></h3>
+                <div class="row">
+                    <div id="myDIV" class=" col-md-12 text-center">
+                        <button class="btn filter-button custom-buttons live" data-filter="Interior">Interior</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Exterior">Exterior</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Mats">Mats</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Detailing">Car Detailing</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Leds">LED lights</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Suvs">SUV Items</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Utilites">Outdoor Utilites</button>
+                        <button class="btn filter-button custom-buttons" data-filter="Others">Others</button>
+                    </div>
+                </div>
+                <div class="new-arrival-products row product_listing">
+                    {% if all_products %}
+                        {% for item in all_products %}
+                        <div class="col-md-3 product-men filter {{ item.product_category|cut:" " }}">
+                            <div class="men-pro-item simpleCart_shelfItem h-100-p">
+                                <div class="h-200">
+                                    <div class="h-100-p">
+                                        <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}">
+                                            <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-100-p flex-row">
+                                                <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}" class="pro-image-front">
+                                                <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}" class="pro-image-back">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item-info-product h-120">
+                                    <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>
+                                    {% if item.product_discounted_price != null %}
+                                        <div class="info-product-price">
+											<del>Rs {{ item.product_price|floatformat }}</del>
+                                            <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat }}</span>
+                                        </div>
+                                    {% else %}
+                                        <div class="info-product-price">
+                                            <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat }}</span>
+                                        </div>
+                                    {% endif %}
+
+                                    <button class="add-to-cart-btn" id="addtocart-{{ item.id }}" onclick='addItemToCart("{{ item.id }}")'>
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+				</div>
+		</div>
+    </div>
+	<!-- //new_arrivals -->
 	<div class="container">
 		<h3 class="wthree_text_info"><span>Car</span> Accessories <span>and</span> Auto Parts</h3>
 
@@ -150,62 +207,6 @@
 	</div>
 	</div>
     </div>
-<!-- /new_arrivals -->
-	<div class="new_arrivals_agile_w3ls_info">
-		<div class="container">
-		    <h3 class="wthree_text_info">New <span>Arrivals</span></h3>
-                <div class="row">
-                    <div id="myDIV" class=" col-md-12 text-center">
-                        <button class="btn filter-button custom-buttons live" data-filter="Interior">Interior</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Exterior">Exterior</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Mats">Mats</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Detailing">Car Detailing</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Leds">LED lights</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Suvs">SUV Items</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Utilites">Outdoor Utilites</button>
-                        <button class="btn filter-button custom-buttons" data-filter="Others">Others</button>
-                    </div>
-                </div>
-                <div class="new-arrival-products row product_listing">
-                    {% if all_products %}
-                        {% for item in all_products %}
-                        <div class="col-md-3 product-men filter {{ item.product_category|cut:" " }}">
-                            <div class="men-pro-item simpleCart_shelfItem h-100-p">
-                                <div class="h-200">
-                                    <div class="h-100-p">
-                                        <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}">
-                                            <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-100-p flex-row">
-                                                <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}" class="pro-image-front">
-                                                <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}" class="pro-image-back">
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="item-info-product h-120">
-                                    <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>
-                                    {% if item.product_discounted_price != null %}
-                                        <div class="info-product-price">
-											<del>Rs {{ item.product_price|floatformat }}</del>
-                                            <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat }}</span>
-                                        </div>
-                                    {% else %}
-                                        <div class="info-product-price">
-                                            <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat }}</span>
-                                        </div>
-                                    {% endif %}
-
-                                    <button class="add-to-cart-btn" id="addtocart-{{ item.id }}" onclick='addItemToCart("{{ item.id }}")'>
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
-				</div>
-		</div>
-    </div>
-	<!-- //new_arrivals -->
 	<!-- /we-offer -->
 		<div class="sale-w3ls deliver-across w-100-p">
 			<div class="container">
