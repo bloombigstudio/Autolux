@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% load humanize %}
 <style>
     .sale-w3ls {
         background: url("{{ home_categories_images.shop_now.url }}");
@@ -106,12 +107,12 @@
                                     <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>
                                     {% if item.product_discounted_price != null %}
                                         <div class="info-product-price">
-											<del>Rs {{ item.product_price|floatformat }}</del>
-                                            <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat }}</span>
+											<del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>
+                                            <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>
                                         </div>
                                     {% else %}
                                         <div class="info-product-price">
-                                            <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat }}</span>
+                                            <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma }}</span>
                                         </div>
                                     {% endif %}
 

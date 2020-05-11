@@ -49,12 +49,12 @@
             <h3>{{ item.product_id.product_title }}</h3>
                 {% if item.product_id.product_discounted_price != null %}
                     <p>
-                        <del>Rs {{ item.product_id.product_price|floatformat }}</del>
-                        <span class="item_price">Rs {{ item.product_id.product_discounted_price|floatformat }}</span>
+                        <del>Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</del>
+                        <span class="item_price">Rs {{ item.product_id.product_discounted_price|floatformat:2|intcomma }}</span>
                     </p>
                 {% else %}
                     <p>
-                        <span class="item_price">Rs {{ item.product_id.product_price|floatformat }}</span>
+                        <span class="item_price">Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</span>
                     </p>
                 {% endif %}
             <h5>{{ item.product_description }}</h5>
@@ -144,12 +144,12 @@
                                 <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category  itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>
                                 {% if item.product_discounted_price != null %}
                                     <div class="info-product-price">
-                                        <del>Rs {{ item.product_price }}</del>
-                                        <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price }}</span>
+                                        <del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>
+                                        <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>
                                     </div>
                                 {% else %}
                                     <div class="info-product-price">
-                                        <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price }}</span>
+                                        <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma}}</span>
                                     </div>
                                 {% endif %}
 
