@@ -58,7 +58,7 @@
                         <span class="item_price">Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</span>
                     </p>
                 {% endif %}
-            <h5>{{ item.product_description }}</h5>
+            <h5>{{ item.product_description | safe }}</h5>
 
             {% if productColors %}
             <div class="multiselect-colors" id="product-colors">
