@@ -108,7 +108,7 @@
                <div class="tab1">
 
                     <div class="single_page_agile_its_w3ls">
-                       <p>{{ item.product_description }}</p>
+                       <p>{{ item.product_description |safe }}</p>
                     </div>
                 </div>
                 <!--//tab_one-->
@@ -116,7 +116,7 @@
 
                     <div class="single_page_agile_its_w3ls">
                       <h6>{{ item.product_id.product_title }}</h6>
-                       <p>{{ item.product_information }}</p>
+                       <p>{{ item.product_information |safe }}</p>
                     </div>
                 </div>
             </div>
