@@ -21,6 +21,24 @@
 <div class="contact-us-image">
     <img class="category-header-img" src="{{ backgroundImage }}">
     <div class="col-md-12 myclass">
+            <div class="col-md-offset-5 col-md-3">
+                <h3 class="contact-us-title-setting" style="opacity:1; color: ghostwhite; text-transform: uppercase">
+                    {{ item.product_id.product_category }}
+                </h3>
+            </div>
+
+            <div class="services-breadcrumb">
+                <div class="agile_inner_breadcrumb">
+
+                    <ul class="w3_short">
+                        <li><a href="{% url 'index' %}">Home</a><i>|</i></li>
+                        <li>{{ item.product_id.product_category }} <i>|</i> </li>
+                        <li>{{ item.product_id.product_title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-12 myclass">
     </div>
 </div>
 
@@ -123,6 +141,47 @@
             </div>
         </div>
     </div>
+        <!-- //recommend -->
+        <h3 class="wthree_text_info new_arrivals_custom_heading">Recommended</h3>
+<!--    <div class="w3_agile_latest_arrivals new_arrivals_custom">-->
+<!--            {% if recommend %}-->
+<!--                {% for item in recommend %}-->
+<!--                    <div class="col-md-3 product-men">-->
+<!--                        <div class="men-pro-item simpleCart_shelfItem h-100-p">-->
+<!--                            <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-200">-->
+<!--                                <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}" class="pro-image-front">-->
+<!--                                <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}" class="pro-image-back">-->
+<!--                                    <div class="men-cart-pro">-->
+<!--                                        <div class="inner-men-cart-pro">-->
+<!--                                            <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}" class="link-product-add-cart">Quick View</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <span class="product-new-top">Recommend</span>-->
+<!--                            </div>-->
+<!--                            <div class="item-info-product ">-->
+<!--                                <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category  itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>-->
+<!--                                {% if item.product_discounted_price != null %}-->
+<!--                                    <div class="info-product-price">-->
+<!--                                        <del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>-->
+<!--                                        <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>-->
+<!--                                    </div>-->
+<!--                                {% else %}-->
+<!--                                    <div class="info-product-price">-->
+<!--                                        <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma}}</span>-->
+<!--                                    </div>-->
+<!--                                {% endif %}-->
+
+<!--                            <button class="add-to-cart-btn" id="addtocart-{{ item.id }}" onclick='addItemToCart("{{ item.id }}")'>-->
+<!--                                Add to Cart-->
+<!--                            </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            {% endif %}-->
+<!--                <div class="clearfix"> </div>-->
+<!--         </div>-->
+<!--    </div>-->
 	<!-- //new_arrivals -->
 	  	<!--/slider_owl-->
     <h3 class="wthree_text_info new_arrivals_custom_heading">New <span>Arrivals</span></h3>
@@ -165,6 +224,8 @@
                 <div class="clearfix"> </div>
          </div>
     </div>
+
+
  </div>
 <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
 
