@@ -1,10 +1,31 @@
-{% extends 'blog/base.html' %}
 
+{% extends 'blog/base.html' %}
+{% load static %}
 {% block title %}
     List of blog posts
 {% endblock %}
 
 {% block content %}
+<div class="contact-us-image">
+        <img style="width: 100%" src="{% static '/images/about_us.jpg' %}">
+        <div class="container myclass">
+        <div class="col-md-offset-5 col-md-3">
+            <h3 class="contact-us-title-setting" style="color: ghostwhite;">Blogs</h3>
+        </div>
+{#        <h3 class="contact-us-title-setting">Blogs</h3>#}
+        <!--/w3_short-->
+             <div class="services-breadcrumb">
+                <div class="agile_inner_breadcrumb">
+
+                   <ul class="w3_short">
+                        <li><a href="{% url 'index' %}">Home</a><i>|</i></li>
+                        <li>Blogs</li>
+                    </ul>
+                 </div>
+            </div>
+	   <!--//w3_short-->
+	    </div>
+    </div>
     <div class="banner-bootom-w3-agileits">
         <div class="container">
             <!-- mens -->
