@@ -151,15 +151,15 @@ class ProductDescription(TemplateView):
         else:
             backgroundImage = category_wise_images.others.url
 
-        value = Product.objects.values_list('product_title')
-        recommend = Product.objects.filter(product_title__icontains=value)[:5]
+        # value = Product.objects.values_list('product_title')
+        # recommend = Product.objects.filter(product_title__icontains=value)[:5]
 
         params['backgroundImage'] = backgroundImage
         params['productColors'] = productColors
         params['item'] = selected_item.first()
         params['new_arrivals'] = new_arrivals
         params['all_cars'] = CarCompany.objects.all()
-        params['recommend'] = recommend
+        # params['recommend'] = recommend
         return render(request, self.template_name,params)
 
 
