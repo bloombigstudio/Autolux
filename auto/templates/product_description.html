@@ -3,11 +3,11 @@
 {% block css %}
 {% load humanize %}
 <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/gif" sizes="16x16">
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
 <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
 <link href="{% static 'css/easy-responsive-tabs.css' %}" rel='stylesheet' type='text/css'/>
-<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen"/>
 
 <!-- //for bootstrap working -->
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
@@ -16,66 +16,72 @@
 {% endblock %}
 {% block content %}
 <!--/single_page-->
-       <!-- /banner_bottom_agile_info -->
+<!-- /banner_bottom_agile_info -->
 
 <div class="contact-us-image">
     <img class="category-header-img" src="{{ backgroundImage }}">
     <div class="col-md-12 myclass">
-            <div class="col-md-offset-5 col-md-3">
-                <h3 class="contact-us-title-setting" style="opacity:1; color: ghostwhite; text-transform: uppercase">
-                    {{ item.product_id.product_category }}
-                </h3>
-            </div>
+        <div class="col-md-offset-5 col-md-3">
+            <h3 class="contact-us-title-setting" style="opacity:1; color: ghostwhite; text-transform: uppercase">
+                {{ item.product_id.product_category }}
+            </h3>
+        </div>
 
-            <div class="services-breadcrumb">
-                <div class="agile_inner_breadcrumb">
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
 
-                    <ul class="w3_short">
-                        <li><a href="{% url 'index' %}">Home</a><i>|</i></li>
-                        <li>{{ item.product_id.product_category }} <i>|</i> </li>
-                        <li>{{ item.product_id.product_title }}</li>
-                    </ul>
-                </div>
+                <ul class="w3_short">
+                    <li><a href="{% url 'index' %}">Home</a><i>|</i></li>
+                    <li>{{ item.product_id.product_category }} <i>|</i></li>
+                    <li>{{ item.product_id.product_title }}</li>
+                </ul>
             </div>
         </div>
+    </div>
     <div class="col-md-12 myclass">
     </div>
 </div>
 
-  <!-- banner-bootom-w3-agileits -->
+<!-- banner-bootom-w3-agileits -->
 <div class="banner-boasdasdotom-w3-agileits">
-	<div class="container">
-	     <div class="col-md-4 single-right-left ">
-			<div class="grid images_3_of_2">
-				<div class="flexslider">
+    <div class="container">
+        <div class="col-md-4 single-right-left ">
+            <div class="grid images_3_of_2">
+                <div class="flexslider">
 
-					<ul class="slides">
-						<li data-thumb="{{ item.first_image.url }}">
-							<div class="thumb-image"> <img src="{{ item.first_image.url }}" alt="{{ item.first_image_alt }}" data-imagezoom="true" class="img-responsive"> </div>
-						</li>
-						<li data-thumb="{{ item.second_image.url }}">
-							<div class="thumb-image"> <img src="{{ item.second_image.url }}" alt="{{ item.second_image_alt }}" data-imagezoom="true" class="img-responsive"> </div>
-						</li>
-						<li data-thumb="{{ item.third_image.url }}">
-							<div class="thumb-image"> <img src="{{ item.third_image.url }}" alt="{{ item.third_image_alt }}" data-imagezoom="true" class="img-responsive"> </div>
-						</li>
-					</ul>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-8 single-right-left simpleCart_shelfItem">
+                    <ul class="slides">
+                        <li data-thumb="{{ item.first_image.url }}">
+                            <div class="thumb-image"><img src="{{ item.first_image.url }}"
+                                                          alt="{{ item.first_image_alt }}" data-imagezoom="true"
+                                                          class="img-responsive"></div>
+                        </li>
+                        <li data-thumb="{{ item.second_image.url }}">
+                            <div class="thumb-image"><img src="{{ item.second_image.url }}"
+                                                          alt="{{ item.second_image_alt }}" data-imagezoom="true"
+                                                          class="img-responsive"></div>
+                        </li>
+                        <li data-thumb="{{ item.third_image.url }}">
+                            <div class="thumb-image"><img src="{{ item.third_image.url }}"
+                                                          alt="{{ item.third_image_alt }}" data-imagezoom="true"
+                                                          class="img-responsive"></div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 single-right-left simpleCart_shelfItem">
             <h3>{{ item.product_id.product_title }}</h3>
-                {% if item.product_id.product_discounted_price != null %}
-                    <p>
-                        <del>Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</del>
-                        <span class="item_price">Rs {{ item.product_id.product_discounted_price|floatformat:2|intcomma }}</span>
-                    </p>
-                {% else %}
-                    <p>
-                        <span class="item_price">Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</span>
-                    </p>
-                {% endif %}
+            {% if item.product_id.product_discounted_price != null %}
+            <p>
+                <del>Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</del>
+                <span class="item_price">Rs {{ item.product_id.product_discounted_price|floatformat:2|intcomma }}</span>
+            </p>
+            {% else %}
+            <p>
+                <span class="item_price">Rs {{ item.product_id.product_price|floatformat:2|intcomma }}</span>
+            </p>
+            {% endif %}
             <h5>{{ item.product_description | safe }}</h5>
 
             {% if productColors %}
@@ -83,29 +89,33 @@
                 <div>Choose colors:</div>
                 <div id="ck-button">
                     {% for colorItem in productColors %}
-                        <label>
-                          <input type="checkbox" class="color-checkbox" value="{{ colorItem.color }}">
-                            <span>{{ colorItem.color }}</span>
-                       </label>
+                    <label>
+                        <input type="checkbox" class="color-checkbox" value="{{ colorItem.color }}">
+                        <span>{{ colorItem.color }}</span>
+                    </label>
                     {% endfor %}
                 </div>
             </div>
             {% endif %}
             <div class="center">
                 <p>
-                  </p><div class="input-group">
+                </p>
+                <div class="input-group">
                       <span class="input-group-btn">
-                          <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
+                          <button type="button" class="btn btn-danger btn-number" data-type="minus"
+                                  data-field="quant[2]">
                             <span class="glyphicon glyphicon-minus"></span>
                           </button>
                       </span>
-                      <input id="pd_quantity_value" type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                    <input id="pd_quantity_value" type="text" name="quant[2]" class="form-control input-number"
+                           value="1" min="1" max="100">
+                    <span class="input-group-btn">
+                          <button type="button" class="btn btn-success btn-number" data-type="plus"
+                                  data-field="quant[2]">
                               <span class="glyphicon glyphicon-plus"></span>
                           </button>
                       </span>
-                  </div>
+                </div>
                 <p></p>
             </div>
             <div class="occasion-cart">
@@ -114,119 +124,130 @@
                 </button>
             </div>
         </div>
-        <div class="clearfix"> </div>
-				<!-- /new_arrivals -->
-	<div class="responsive_tabs_agileits">
-        <div id="horizontalTab">
+        <div class="clearfix"></div>
+        <!-- /new_arrivals -->
+        <div class="responsive_tabs_agileits">
+            <div id="horizontalTab">
                 <ul class="resp-tabs-list">
                     <li>Description</li>
                     <li>Information</li>
                 </ul>
-            <div class="resp-tabs-container">
-            <!--/tab_one-->
-               <div class="tab1">
+                <div class="resp-tabs-container">
+                    <!--/tab_one-->
+                    <div class="tab1">
 
-                    <div class="single_page_agile_its_w3ls">
-                       <p>{{ item.product_description |safe }}</p>
+                        <div class="single_page_agile_its_w3ls">
+                            <p>{{ item.product_description |safe }}</p>
+                        </div>
                     </div>
-                </div>
-                <!--//tab_one-->
-                   <div class="tab3">
+                    <!--//tab_one-->
+                    <div class="tab3">
 
-                    <div class="single_page_agile_its_w3ls">
-                      <h6>{{ item.product_id.product_title }}</h6>
-                       <p>{{ item.product_information |safe }}</p>
+                        <div class="single_page_agile_its_w3ls">
+                            <h6>{{ item.product_id.product_title }}</h6>
+                            <p>{{ item.product_information |safe }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <!-- //recommend -->
+<!--        {% if recommend %}-->
+<!--        {% for rec in recommend %}-->
         <h3 class="wthree_text_info new_arrivals_custom_heading">Recommended</h3>
-<!--    <div class="w3_agile_latest_arrivals new_arrivals_custom">-->
-<!--            {% if recommend %}-->
-<!--                {% for item in recommend %}-->
-<!--                    <div class="col-md-3 product-men">-->
-<!--                        <div class="men-pro-item simpleCart_shelfItem h-100-p">-->
-<!--                            <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-200">-->
-<!--                                <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}" class="pro-image-front">-->
-<!--                                <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}" class="pro-image-back">-->
-<!--                                    <div class="men-cart-pro">-->
-<!--                                        <div class="inner-men-cart-pro">-->
-<!--                                            <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}" class="link-product-add-cart">Quick View</a>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <span class="product-new-top">Recommend</span>-->
-<!--                            </div>-->
-<!--                            <div class="item-info-product ">-->
-<!--                                <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category  itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>-->
-<!--                                {% if item.product_discounted_price != null %}-->
-<!--                                    <div class="info-product-price">-->
-<!--                                        <del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>-->
-<!--                                        <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>-->
-<!--                                    </div>-->
-<!--                                {% else %}-->
-<!--                                    <div class="info-product-price">-->
-<!--                                        <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma}}</span>-->
-<!--                                    </div>-->
-<!--                                {% endif %}-->
-
-<!--                            <button class="add-to-cart-btn" id="addtocart-{{ item.id }}" onclick='addItemToCart("{{ item.id }}")'>-->
-<!--                                Add to Cart-->
-<!--                            </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                {% endfor %}-->
-<!--            {% endif %}-->
-<!--                <div class="clearfix"> </div>-->
-<!--         </div>-->
-<!--    </div>-->
-	<!-- //new_arrivals -->
-	  	<!--/slider_owl-->
-    <h3 class="wthree_text_info new_arrivals_custom_heading">New <span>Arrivals</span></h3>
-    <div class="w3_agile_latest_arrivals new_arrivals_custom">
-            {% if new_arrivals %}
-                {% for item in new_arrivals %}
-                    <div class="col-md-3 product-men">
-                        <div class="men-pro-item simpleCart_shelfItem h-100-p">
-                            <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-200">
-                                <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}" class="pro-image-front">
-                                <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}" class="pro-image-back">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}" class="link-product-add-cart">Quick View</a>
-                                        </div>
+<!--        {% endfor %}-->
+<!--        {% endif %}-->
+            <div class="w3_agile_latest_arrivals new_arrivals_custom">
+                    {% if recommend %}
+                        {% for item in recommend %}
+                            {% if not forloop.first %}
+                            <div class="col-md-3 product-men">
+                                <div class="men-pro-item simpleCart_shelfItem h-100-p">
+                                    <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-200">
+                                        <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}" class="pro-image-front">
+                                        <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}" class="pro-image-back">
+                                            <div class="men-cart-pro">
+                                                <div class="inner-men-cart-pro">
+                                                    <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}" class="link-product-add-cart">Quick View</a>
+                                                </div>
+                                            </div>
+                                            <span class="product-new-top">Recommend</span>
                                     </div>
-                                    <span class="product-new-top">New</span>
+                                    <div class="item-info-product ">
+                                        <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category  itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>
+                                        {% if item.product_discounted_price != null %}
+                                            <div class="info-product-price">
+                                                <del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>
+                                                <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>
+                                            </div>
+                                        {% else %}
+                                            <div class="info-product-price">
+                                                <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma}}</span>
+                                            </div>
+                                        {% endif %}
+
+                                    <button class="add-to-cart-btn" id="addtocart-{{ item.id }}" onclick='addItemToCart("{{ item.id }}")'>
+                                        Add to Cart
+                                    </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="item-info-product ">
-                                <h4><a id="title-{{ item.id }}" href="{% url 'single' category=item.product_category  itemslug=item.product_slug %}">{{ item.product_title }}</a></h4>
-                                {% if item.product_discounted_price != null %}
-                                    <div class="info-product-price">
-                                        <del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>
-                                        <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>
-                                    </div>
-                                {% else %}
-                                    <div class="info-product-price">
-                                        <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma}}</span>
-                                    </div>
-                                {% endif %}
-
-                            <button class="add-to-cart-btn" id="addtocart-{{ item.id }}" onclick='addItemToCart("{{ item.id }}")'>
-                                Add to Cart
-                            </button>
+                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                        <div class="clearfix"> </div>
+                 </div>
+            </div>
+        <!-- //new_arrivals -->
+        <!--/slider_owl-->
+        <h3 class="wthree_text_info new_arrivals_custom_heading">New <span>Arrivals</span></h3>
+        <div class="w3_agile_latest_arrivals new_arrivals_custom">
+            {% if new_arrivals %}
+            {% for item in new_arrivals %}
+            <div class="col-md-3 product-men">
+                <div class="men-pro-item simpleCart_shelfItem h-100-p">
+                    <div id="product-image-{{ item.id }}" class="men-thumb-item men-thumb-item-custom-products h-200">
+                        <img src="{{ item.product_image_front.url }}" alt="{{ item.product_image_front_alt }}"
+                             class="pro-image-front">
+                        <img src="{{ item.product_image_back.url }}" alt="{{ item.product_image_back_alt }}"
+                             class="pro-image-back">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="{% url 'single' category=item.product_category itemslug=item.product_slug %}"
+                                   class="link-product-add-cart">Quick View</a>
                             </div>
                         </div>
+                        <span class="product-new-top">New</span>
                     </div>
-                {% endfor %}
+                    <div class="item-info-product ">
+                        <h4><a id="title-{{ item.id }}"
+                               href="{% url 'single' category=item.product_category  itemslug=item.product_slug %}">{{item.product_title }}</a></h4>
+                        {% if item.product_discounted_price != null %}
+                        <div class="info-product-price">
+                            <del>Rs {{ item.product_price|floatformat:2|intcomma }}</del>
+                            <span class="item_price" id="discounted-price-{{ item.id }}">Rs {{ item.product_discounted_price|floatformat:2|intcomma }}</span>
+                        </div>
+                        {% else %}
+                        <div class="info-product-price">
+                            <span class="item_price" id="price-{{ item.id }}">Rs {{ item.product_price|floatformat:2|intcomma}}</span>
+                        </div>
+                        {% endif %}
+
+                        <button class="add-to-cart-btn" id="addtocart-{{ item.id }}"
+                                onclick='addItemToCart("{{ item.id }}")'>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
             {% endif %}
-                <div class="clearfix"> </div>
-         </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
 
 
- </div>
+</div>
 <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
 
 <script src="{% static 'js/imagezoom.js' %}"></script>
@@ -240,7 +261,7 @@
         });
     });
 </script>
-					<!-- //FlexSlider-->
+<!-- //FlexSlider-->
 <!-- //script for responsive tabs -->
 <script>
     $('.btn-number').click(function(e){
@@ -314,9 +335,10 @@ $(".input-number").keydown(function (e) {
             e.preventDefault();
         }
     });
-    </script>
 
-    <script type="text/javascript">
+</script>
+
+<script type="text/javascript">
         function setQuantity() {
             $('#item_quantity_pd').val($('#pd_quantity_value').val());
         }
@@ -379,6 +401,6 @@ $(".input-number").keydown(function (e) {
             cart.products.push(product);
             localStorage.setItem('cart', JSON.stringify(cart));
         }
-    </script>
+</script>
 
 {% endblock %}
