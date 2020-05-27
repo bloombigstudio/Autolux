@@ -10,6 +10,34 @@ html, body{
 	background: #fff;
 	font-family: 'Open Sans', sans-serif;
 }
+ .whatsapp-icon {
+            z-index: 99999999 !important;
+            position: fixed;
+            cursor: pointer;
+            box-sizing: border-box;
+            bottom: 20px;
+            right: auto;
+            min-width: 40px;
+            right: 5.0000%;
+            left: auto;
+        }
+
+
+
+        @media screen and (max-width: 720px) {
+            .whatsapp-icon img {
+                width: 50px !important;
+                height: auto !important;
+            }
+            /*.whatsapp-icon {
+                left: 20px;
+            }*/
+            .whatsapp-icon {
+                right: 18px;
+                bottom: 85px;
+            }
+            }
+
 body a {
 	text-decoration:none;
 	transition:0.5s all;
