@@ -362,7 +362,7 @@ $(".input-number").keydown(function (e) {
                 {
                     product.price = "{{ item.product_id.product_price }}";
                 }
-                product.description = "{{ item.product_description|safe|linebreaks }}";
+                product.description = "{{ item.product_description|linebreaksbr }}";
                 product.quantity = productQuantity;
                 product.colors = selectedcolors;
                 product.image = "{{ item.product_id.product_image_back.url}}";
