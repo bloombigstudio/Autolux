@@ -106,32 +106,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script>
         {#  Remove product from cart  #}
-        {% for item in all_products %}
-            $('#add-items-here').on('click', '.product-removal-{{ item.id }}', function () {
-                $(".product-id-{{ item.id }}").slideUp(300, function() {
-                $(".product-id-{{ item.id }}").remove();
-                    var items = JSON.parse(localStorage["cart"]);
-                    $('#cart-length').html(items.products.length-1); {# show count of item on cart icon #}
-                    $('.custom-notification').css("display", "flex");
-                      for (var i = 0; i < items.products.length; i++) {
-                         if(items.products[i].id == {{ item.id }}){
-                           items.products.splice(i,1);
-                           break;
-                         }
-                      }
-                      item = JSON.stringify(items);
-                      localStorage.setItem("cart", item);
-                      myData = localStorage.getItem('cart');
-                       parsedData = JSON.parse(myData);
-                       if(parsedData.products.length === 0){
-                            $('.custom-notification').css("display", "none");
-                            $('.stripe-button-el').prop('disabled', true);
-                            $('.checkout').prop('disabled', true);
-                       }
+        $('#add-items-here').on('click', '.product-removal', function () {
+            var itemId = $(this).data('product_id');
+            $(".product-id-" + itemId).slideUp(300, function() {
+                $(".product-id-" + itemId).remove();
+                var items = JSON.parse(localStorage["cart"]);
+                $('#cart-length').html(items.products.length-1); {# show count of item on cart icon #}
+                $('.custom-notification').css("display", "flex");
+                for (var i = 0; i < items.products.length; i++) {
+                    if(items.products[i].id == itemId){
+                    items.products.splice(i,1);
+                    break;
+                    }
+                }
+                item = JSON.stringify(items);
+                localStorage.setItem("cart", item);
+                myData = localStorage.getItem('cart');
+                parsedData = JSON.parse(myData);
+                if(parsedData.products.length === 0){
+                    $('.custom-notification').css("display", "none");
+                    $('.stripe-button-el').prop('disabled', true);
+                    $('.checkout').prop('disabled', true);
+                }
                 calculateTotal()
             });
         });
-        {% endfor %}
     </script>
 
     <script>
@@ -216,8 +215,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 '<div class="product-quantity cart-product-quantity-' + parsedData.products[i].id + '">\n' +
                 '<input id="cart-product-quantity-' + parsedData.products[i].id + '" type="number" value="'+parsedData.products[i].quantity+'" min="1" />\n' +
                 '</div>\n' +
-                '<div class="product-removal-styling product-removal-' + parsedData.products[i].id + '">\n' +
-                '<button class="remove-product">\n' + 'Remove\n' + '</button>\n' +
+                '<div class="product-removal-styling product-removal" data-product_id="' + parsedData.products[i].id + '">\n' +
+                '<button class="remove-product" >\n' + 'Remove\n' + '</button>\n' +
                 '</div>\n' +
                 '<div class="product-line-price total_price" id="cart-line-price-' + parsedData.products[i].id + '">' + parsedData.products[i].price + '</div>\n' +
                 '</div>');
