@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -179,7 +180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             sum = 0;
             var cart_items = JSON.parse(localStorage["cart"]);
               for (var i = 0; i < cart_items.products.length; i++) {
-                var price = parseFloat($('#cart-product-price-'+ cart_items.products[i].id ).text());
+                var price = parseFloat($('#cart-product-price-'+ cart_items.products[i].id ).text().replace(",",""));
                 var quantity = parseFloat($('#cart-product-quantity-'+ cart_items.products[i].id).val());
                 var linePrice = price * quantity;
                 $('#cart-line-price-'+ cart_items.products[i].id).html(linePrice);
@@ -208,7 +209,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 '</div>\n' +
                 '<div class="product-details">\n' +
                 '<div class="product-title" id="cart-product-title">' + parsedData.products[i].name + '</div>\n' +
-                '<p class="product-description" id="cart-product-description">' + parsedData.products[i].description + '</p>\n' +
+                //'<p class="product-description" id="cart-product-description">' + parsedData.products[i].description + '</p>\n' +
+                '<p class="product-description" id="cart-product-description">' + '</p>\n' +
                 '</div>\n' +
                 '<div class="product-price" id="cart-product-price-' + parsedData.products[i].id + '">' + parsedData.products[i].price + '</div>\n' +
                 '<div class="product-quantity cart-product-quantity-' + parsedData.products[i].id + '">\n' +

@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x^3r#bp%mymkted67mne3p42+-2&zx4_&xu@stchk9hw3vw8rq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True;
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,9 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'auto',
     'django_filters',
     'widget_tweaks',
+    'ckeditor',
+    'blog',
+    'django.contrib.humanize',
 ]
 
 # AUTH_USER_MODEL = 'auto.User'
@@ -137,16 +141,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/home/media/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_ROOT = '/home/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'autolux/')
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'autolux/')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'henrywilliam2020@gmail.com'
-EMAIL_HOST_PASSWORD = 'Marketing1122'
+EMAIL_HOST_USER = 'autoluxpk1@gmail.com'
+EMAIL_HOST_PASSWORD = 'Autoluxpk007'
 EMAIL_PORT = 587

@@ -271,7 +271,8 @@ class PlaceOrder(TemplateView):
                 total_bill = 0
                 charge = "Stripe Payment id"
                 for order in cart_object["products"]:
-                    item_count = float(order['price']) * float(order['quantity'])
+                    # item_count = float(order['price']) * float(order['quantity'])
+                    item_count = float(order['price'].replace(",","")) * float(order['quantity'])
                     total_bill = total_bill + item_count
 
                 if payment_method == "Online Payment":
@@ -295,7 +296,8 @@ class PlaceOrder(TemplateView):
                     else:
                         colors = ''
 
-                    item_count = float(order['price']) * float(order['quantity'])
+                    #item_count = float(order['price']) * float(order['quantity'])
+                    item_count = float(order['price'].replace(",","")) * float(order['quantity'])
                     if payment_method == "Online Payment":
                         user.user_without_account = Order(user=user,
                                                           item_id=order['id'],
@@ -330,11 +332,9 @@ class PlaceOrder(TemplateView):
                           last_name + "\nEmail: " + email + "\nAddress: " + address + \
                           "\nContact Number: " + contact_number + "\nOrder Number: " + order_number
 
-                send_mail(subject, message, 'autoluxpk@gmail.com', ['autoluxpk@gmail.com'],
-                          fail_silently=False)
+                send_mail(subject, message, 'autoluxpk1@gmail.com', ['autoluxpk@gmail.com'], fail_silently=False)
 
-                send_mail(subject, message, 'autoluxpk@gmail.com', [email],
-                          fail_silently=False)
+                send_mail(subject, message, 'autoluxpk1@gmail.com', [email], fail_silently=False)
 
                 orderData = {
                     'orderNumber': order_number,
