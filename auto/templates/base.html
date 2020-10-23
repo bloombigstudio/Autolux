@@ -134,29 +134,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
 
     <script>
-        {% for item in all_products %}
-            $('#add-items-here').on('change', '.cart-product-quantity-{{ item.id }}', function () {
+        $('#add-items-here').on('change', '.update-product-quantity', function () {
+            var itemId = $(this).data('product_id');
             var productRow = $(this).parent().parent();
-            {#var price;#}
             var get_cart = JSON.parse(localStorage["cart"]);
-              {#for (var i = 0; i < get_cart.products.length; i++) {#}
-              {#    if(get_cart.products[i].id == {{ item.id }}){#}
-              {#        price = parseFloat($('#cart-product-price-{{ item.id }}').text());#}
-              {#        break;#}
-              {#    }#}
-              //}
-            var price = parseFloat($('#cart-product-price-{{ item.id }}').text());
-            var quantity = parseFloat($('#cart-product-quantity-{{ item.id }}').val());
+            var price = parseFloat($('#cart-product-price-' + itemId).text());
+            var quantity = parseFloat($('#cart-product-quantity-' + itemId).val());
             var linePrice = price * quantity;
-            $('#cart-line-price-{{ item.id }}').html(linePrice);
-            $('#cart-line-price-{{ item.id }}').fadeOut(300, function() {
-                  $('#cart-line-price-{{ item.id }}').html(linePrice);
+            $('#cart-line-price-' + itemId).html(linePrice);
+            $('#cart-line-price-' + itemId).fadeOut(300, function() {
+                  $('#cart-line-price-' + itemId).html(linePrice);
                   $(this).fadeIn(300);
                   calculateTotal();
                 });
               var cart_items = JSON.parse(localStorage["cart"]);
               for (var i = 0; i < cart_items.products.length; i++) {
-                 if(cart_items.products[i].id == {{ item.id }}){
+                 if(cart_items.products[i].id == itemId){
                      cart_items.products[i].quantity = quantity.toString();
                      break;
                  }
@@ -164,7 +157,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               item = JSON.stringify(cart_items);
               localStorage.setItem("cart", item);
         });
-        {% endfor %}
     </script>
 
     <script>
@@ -212,7 +204,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 '<p class="product-description" id="cart-product-description">' + '</p>\n' +
                 '</div>\n' +
                 '<div class="product-price" id="cart-product-price-' + parsedData.products[i].id + '">' + parsedData.products[i].price + '</div>\n' +
-                '<div class="product-quantity cart-product-quantity-' + parsedData.products[i].id + '">\n' +
+                '<div class="product-quantity cart-product-quantity-' + parsedData.products[i].id + 'update-product-quantity"  data-product_id="' + parsedData.products[i].id + '">\n' +
                 '<input id="cart-product-quantity-' + parsedData.products[i].id + '" type="number" value="'+parsedData.products[i].quantity+'" min="1" />\n' +
                 '</div>\n' +
                 '<div class="product-removal-styling product-removal" data-product_id="' + parsedData.products[i].id + '">\n' +
