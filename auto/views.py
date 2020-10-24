@@ -18,6 +18,9 @@ from django.utils import timezone
 stripe.api_key = settings.STRIPE_SECRET_KEY
 from django.http import JsonResponse, BadHeaderError, HttpResponse
 
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+
 signUpForm = SignUpForm()
 signInForm = SignInForm()
 all_cars = CarCompany.objects.all()
@@ -177,7 +180,7 @@ class Contact(TemplateView):
             name = request.GET['Name']
             message = "Sender Name: " + name +"\n" + message + "\n" + "From :" + from_email
             try:
-                send_mail(subject, message, 'autoluxpk@gmail.com', ['autoluxpk@gmail.com'],
+                send_mail(subject, message, 'autoluxpk1@gmail.com', ['autoluxpk@gmail.com'],
                           fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
@@ -325,17 +328,26 @@ class PlaceOrder(TemplateView):
                         # direct_order.save()
                         user.user_without_account.save()
 
+                cart_data = cart_object['products']
+                data = {'first_name': first_name,
+                        'last_name': last_name,
+                        'email': email,
+                        'address': address,
+                        'contact_number': contact_number,
+                        'order_number': order_number,
+                        'cart_data': cart_data}
+
                 subject = 'New Order Placed'
-                message = "Congratulations! New order has been placed " \
-                          "with following details. \n\n" \
-                          "First Name: " + first_name + " \nLast Name: " + \
-                          last_name + "\nEmail: " + email + "\nAddress: " + address + \
-                          "\nContact Number: " + contact_number + "\nOrder Number: " + order_number
+                text_content = ''
+                html = get_template('email.html')
+                html_content = html.render({'data':data})
+                msg = EmailMultiAlternatives(subject, text_content, 'autoluxpk1@gmail.com', ['autoluxpk@gmail.com'])
+                msg.attach_alternative(html_content, "text/html")
+                msg.send(fail_silently = False)
 
-                send_mail(subject, message, 'autoluxpk1@gmail.com', ['autoluxpk@gmail.com'], fail_silently=False)
-
-                send_mail(subject, message, 'autoluxpk1@gmail.com', [email], fail_silently=False)
-
+                msg = EmailMultiAlternatives(subject, text_content, 'autoluxpk1@gmail.com', [email])
+                msg.send(fail_silently = False)
+                
                 orderData = {
                     'orderNumber': order_number,
                     'success': True

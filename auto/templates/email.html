@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <p>Congratulations! New order has been placed with following details.</p>
+    <br>
+    <p>First Name: {{first_name}}</p>
+    <p>Last Name:{{last_name}}</p>
+    <p>Email: {{email}}</p>
+    <p>Address: {{address}}</p>
+    <p>Contact Number: {{contact_number}}</p>
+    <p>Order Number: {{order_number}}</p>
+    <br>
+    <p>Cart Items Details:</p>
+    <br>
+    <table style="border: 1px solid grey; width: auto;">
+        <tr>
+            <th>Product ID</th>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quanity</th>
+            <th>Colors</th>
+        </tr>
+        {% for item in cart_data %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td><img src="{{item.image}}" alt="{{item.id}}_image"></tr>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.colors}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
