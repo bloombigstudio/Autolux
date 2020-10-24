@@ -38,6 +38,7 @@
             <th>Price</th>
             <th>Quanity</th>
             <th>Colors</th>
+            <th>Sub Total</th>
         </tr>
         {% for item in data.cart_data %}
         <tr>
@@ -46,9 +47,20 @@
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{item.colors}}</td>
+            <td>
+                {% if item.colors%}
+                    {% for color in item.colors %}
+                        {{color}},
+                    {% endfor %}
+                {% endif %}
+            </td>
+            <td>{{item.subtotal}}</td>
         </tr>
         {% endfor %}
+        <tr>
+            <td colspan="6" style="text-align: right; font-weight: bold;">Grand Total</td>
+            <td style="font-weight: bold;">{{data.total}}</td>
+        </tr>
     </table>
 </body>
 

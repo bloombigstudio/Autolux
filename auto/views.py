@@ -329,13 +329,19 @@ class PlaceOrder(TemplateView):
                         user.user_without_account.save()
 
                 cart_data = cart_object['products']
+                total = 0
+                for item in cart_data:
+                    item.subtotal = float((item.price).replace(",","")) * float(item.quantity)
+                    total += item.subtotal
+
                 data = {'first_name': first_name,
                         'last_name': last_name,
                         'email': email,
                         'address': address,
                         'contact_number': contact_number,
                         'order_number': order_number,
-                        'cart_data': cart_data}
+                        'cart_data': cart_data,
+                        'total': total}
 
                 subject = 'New Order Placed'
                 text_content = ''
