@@ -346,6 +346,7 @@ class PlaceOrder(TemplateView):
                 msg.send(fail_silently = False)
 
                 msg = EmailMultiAlternatives(subject, text_content, 'autoluxpk1@gmail.com', [email])
+                msg.attach_alternative(html_content, "text/html")
                 msg.send(fail_silently = False)
                 
                 orderData = {

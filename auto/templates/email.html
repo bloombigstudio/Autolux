@@ -9,12 +9,12 @@
 <body>
     <p>Congratulations! New order has been placed with following details.</p>
     <br>
-    <p>First Name: {{first_name}}</p>
-    <p>Last Name:{{last_name}}</p>
-    <p>Email: {{email}}</p>
-    <p>Address: {{address}}</p>
-    <p>Contact Number: {{contact_number}}</p>
-    <p>Order Number: {{order_number}}</p>
+    <p>First Name: {{data.first_name}}</p>
+    <p>Last Name:{{data.last_name}}</p>
+    <p>Email: {{data.email}}</p>
+    <p>Address: {{data.address}}</p>
+    <p>Contact Number: {{data.contact_number}}</p>
+    <p>Order Number: {{data.order_number}}</p>
     <br>
     <p>Cart Items Details:</p>
     <br>
@@ -27,7 +27,7 @@
             <th>Quanity</th>
             <th>Colors</th>
         </tr>
-        {% for item in cart_data %}
+        {% for item in data.cart_data %}
         <tr>
             <td>{{item.id}}</td>
             <td><img src="{{item.image}}" alt="{{item.id}}_image"></tr>
