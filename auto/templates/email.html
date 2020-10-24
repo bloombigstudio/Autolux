@@ -4,6 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid grey;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +30,7 @@
     <br>
     <p>Cart Items Details:</p>
     <br>
-    <table style="border: 1px solid grey; width: auto;">
+    <table>
         <tr>
             <th>Product ID</th>
             <th>Image</th>
@@ -30,7 +42,7 @@
         {% for item in data.cart_data %}
         <tr>
             <td>{{item.id}}</td>
-            <td><img src="{{item.image}}" alt="{{item.id}}_image" style="width: 100px;"></tr>
+            <td><img src="{{item.image}}" alt="{{item.id}}_image" style="width: 100px;">
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.quantity}}</td>
@@ -39,4 +51,5 @@
         {% endfor %}
     </table>
 </body>
+
 </html>
