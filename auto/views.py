@@ -332,7 +332,7 @@ class PlaceOrder(TemplateView):
                 total = 0
                 for item in cart_data:
                     item['subtotal'] = float((item['price']).replace(",","")) * float(item['quantity'])
-                    total += item.subtotal
+                    total += item['subtotal']
 
                 data = {'first_name': first_name,
                         'last_name': last_name,
